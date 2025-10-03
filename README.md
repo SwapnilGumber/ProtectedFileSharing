@@ -19,13 +19,15 @@ Each file download is tracked, and password-protected files require correct cred
 ## 📸 Screenshots
 
 ### Upload Page
-<img width="719" height="429" alt="image" src="https://github.com/user-attachments/assets/31eb2734-aa4b-470b-be3b-0a1f421d0548" />
-<img width="707" height="442" alt="image" src="https://github.com/user-attachments/assets/6022dcb0-a6fc-42b9-a889-331e3ad16ce1" />
+<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/355adadd-707e-40c4-9e7d-48cc03a74aac" />
+<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/8dd31ee7-d97f-4920-849e-967d82cb5c83" />
 <img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c738a458-5248-458a-80b9-ec85124ce325" />
 
 
 ### Password Page
-<img width="694" height="410" alt="image" src="https://github.com/user-attachments/assets/e5a5581f-2704-4231-b370-b83e2bfd0eb2" />
+<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/ebbbccc1-9d1c-4a97-8ee3-775b858716cf" />
+<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c172a51c-2017-4bfe-94e9-58779f54a9da" />
+
 
 
 👉 Create a folder named **`screenshots/`** in the project root and add your screenshots there (`upload.png`, `password.png` etc.).  
