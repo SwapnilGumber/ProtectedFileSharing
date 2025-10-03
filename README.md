@@ -19,7 +19,7 @@ Each file download is tracked, and password-protected files require correct cred
 ## 📸 Screenshots
 
 ### Upload Page
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/355adadd-707e-40c4-9e7d-48cc03a74aac" />
+<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/4ab79c53-7581-42f6-94f5-dbc26b88edde" />
 <img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/8dd31ee7-d97f-4920-849e-967d82cb5c83" />
 <img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c738a458-5248-458a-80b9-ec85124ce325" />
 
