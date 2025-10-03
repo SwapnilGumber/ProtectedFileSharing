@@ -29,10 +29,6 @@ Each file download is tracked, and password-protected files require correct cred
 <img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c172a51c-2017-4bfe-94e9-58779f54a9da" />
 
 
-
-👉 Create a folder named **`screenshots/`** in the project root and add your screenshots there (`upload.png`, `password.png` etc.).  
-Update the paths in the README as needed.
-
 ---
 
 ## ⚙️ Installation
