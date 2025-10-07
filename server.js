@@ -3,14 +3,20 @@ const multer = require("multer")
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 const File = require("./models/file")
+const fs = require("fs");
+
+const { v2: cloudinary } = require("cloudinary");
+cloudinary.config(); 
 
 const express = require("express")
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 const upload = multer({ dest: "uploads" })
+const uri = process.env.DATABASE_URL;
+const dbName = process.env.DB_NAME;
 
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(uri , {dbName})
 
 app.set("view engine", "ejs")
 
@@ -19,17 +25,31 @@ app.get("/", (req, res) => {
 })
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-  const fileData = {
-    path: req.file.path,
-    originalName: req.file.originalname,
-  }
-  if (req.body.password != null && req.body.password !== "") {
-    fileData.password = await bcrypt.hash(req.body.password, 10)
-  }
+  try {
+    const up = await cloudinary.uploader.upload(req.file.path, {
+      resource_type: "raw",
+      folder: "protected-files",
+      use_filename: true,
+      unique_filename: false,
+    });
 
-  const file = await File.create(fileData)
+    const fileData = {
+      path: up.secure_url,              
+      originalName: req.file.originalname,
+      cloudinaryPublicId: up.public_id, 
+    };
+    if (req.body.password) {
+      fileData.password = await bcrypt.hash(req.body.password, 10);
+    }
 
-  res.render("index", { fileLink: `${req.headers.origin}/file/${file.id}` })
+    const file = await File.create(fileData);
+    fs.unlink(req.file.path, () => {}) 
+
+    res.render("index", { fileLink: `${req.headers.origin}/file/${file.id}` });
+  } catch (e) {
+    console.error("Cloudinary upload failed:", e.message);
+    res.status(500).send("Upload failed");
+  }
 })
 
 app.route("/file/:id").get(handleDownload).post(handleDownload)
@@ -57,7 +77,16 @@ async function handleDownload(req, res) {
   await file.save()
   console.log("Download count:", file.downloadCount)
 
-  return res.download(file.path, file.originalName)
+  // return res.download(file.path, file.originalName)
+  if (file.cloudinaryPublicId) {
+    const downloadUrl = cloudinary.url(file.cloudinaryPublicId, {
+      resource_type: 'raw',
+      flags: 'attachment',
+      filename: file.originalName || 'file'
+    })
+    return res.redirect(downloadUrl);
+  }
+  return res.redirect(file.path);
 }
 
 app.listen(process.env.PORT)
