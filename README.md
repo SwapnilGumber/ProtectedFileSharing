@@ -38,8 +38,8 @@ Each file download is tracked, and password-protected files require correct cred
 
 ### 1. Clone the repository
   ```bash
-  git clone https://github.com/your-username/secure-file-sharing.git
-  cd secure-file-sharing
+  git clone https://github.com/SwapnilGumber/ProtectedFileSharing.git
+  cd ProtectedFileSharing
   ```
 
 ### 2. Install dependencies
