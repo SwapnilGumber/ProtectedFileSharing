@@ -8,25 +8,28 @@ Each file download is tracked, and password-protected files require correct cred
 
 ## ✨ Features
 - Upload files and generate a **unique shareable link**
-- **Optional password protection** for sensitive files
+- Shareable link: `/file/:id`
+- Optional **password protection** (bcrypt hashed)
 - Download tracking with a **download counter**
+- Download counter persisted in MongoDB
 - Secure password hashing with **bcrypt**
-- File storage handled by **Multer**
+- File upload with **Multer** → stored on **Cloudinary**
 - Clean frontend using **EJS templates**
+- Simple, modern UI (no extra CSS framework)
 
 ---
 
 ## 📸 Screenshots
 
 ### Upload Page
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/4ab79c53-7581-42f6-94f5-dbc26b88edde" />
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/8dd31ee7-d97f-4920-849e-967d82cb5c83" />
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c738a458-5248-458a-80b9-ec85124ce325" />
+<img width="1919" height="898" alt="image" src="https://github.com/user-attachments/assets/2e6c208f-8a62-4e78-86f7-b46439b8347e" />
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/1b2ab8e1-f378-438a-89cf-3fb9d9d8b622" />
+
 
 
 ### Password Page
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/ebbbccc1-9d1c-4a97-8ee3-775b858716cf" />
-<img width="1334" height="396" alt="image" src="https://github.com/user-attachments/assets/c172a51c-2017-4bfe-94e9-58779f54a9da" />
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/8ba86ad9-a0c1-4a7b-b10c-c7bf67cd8f5c" />
+
 
 
 ---
@@ -45,11 +48,13 @@ Each file download is tracked, and password-protected files require correct cred
   ```
 
 ### 3. Set up MongoDB
-You can use MongoDB locally (default port 27017) or MongoDB Atlas in the cloud.
+You can use MongoDB locally (default port 27017) or MongoDB Atlas in the cloud and Cloudinary v2.
 Create a .env file in your project root:
   ```bash
-  DATABASE_URL=mongodb://localhost:27017/filesharing
+  DATABASE_URL=mongodb+srv://<DB_USER>:<ENCODED_PASSWORD>@<CLUSTER_HOST>/?retryWrites=true&w=majority
   PORT=3000
+  DB_NAME=db_name
+  CLOUDINARY_URL=cloudinary://<API_KEY>:<API_SECRET>@<CLOUD_NAME>
   ```
 
 ### 4. Run the server
